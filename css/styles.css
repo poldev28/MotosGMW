@@ -1,3 +1,19 @@
+/* Fuentes Customizadas de DaFont */
+@font-face {
+    font-family: 'Pirulen';
+    src: url('../fonts/pirulen.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Nova Mono';
+    src: url('../fonts/novamono.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Elronet Monospace';
+    src: url('../fonts/Elronmonospace.ttf') format('truetype');
+}
+
 :root {
     --primary-color: #E6BE14; /* Amarillo más suave y elegante, menos chocante */
     --primary-hover: #E6C200;
@@ -60,8 +76,9 @@ a {
 
 .nav-links a {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     transition: color 0.3s;
+    font-family: 'Elronet Monospace', sans-serif;
 }
 
 .nav-links a:hover {
@@ -101,6 +118,7 @@ a {
     font-size: 4rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-family: 'nova mono', sans-serif;
 }
 
 .hero h1 span {
