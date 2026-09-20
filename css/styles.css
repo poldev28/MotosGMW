@@ -172,12 +172,22 @@ a {
 
 .marquee-container {
     display: flex;
-    width: 200%;
-    animation: scroll 20s linear infinite;
+    overflow-x: auto; /* Permite scroll horizontal */
+    padding: 1rem 0;
+    cursor: grab; /* Muestra manito de agarrar */
+    -webkit-overflow-scrolling: touch; /* Deslizamiento suave en celulares */
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.marquee-container:hover {
-    animation-play-state: paused;
+.marquee-container:active {
+    cursor: grabbing; /* Manito cerrada al arrastrar */
+}
+
+/* Ocultar la barra de scroll para que quede más limpio */
+.marquee-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .brand-item {
@@ -232,6 +242,45 @@ a {
 
 .section-title span {
     color: var(--primary-color);
+}
+
+/* Opiniones / Testimonials */
+.reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1rem 0 2rem 0;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.reviews-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.reviews-grid:active {
+    cursor: grabbing;
+}
+
+.review-card-img {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(230, 190, 20, 0.15);
+    transition: transform 0.3s;
+    min-width: 300px;
+    max-width: 350px;
+    flex-shrink: 0; /* Ensures the cards don't shrink inside the flex container */
+    object-fit: contain; /* Keeps the screenshot aspect ratio perfect */
+    padding: 0; /* Removing padding so the image goes edge to edge */
+}
+
+.review-card-img:hover {
+    transform: translateY(-5px);
 }
 
 /* About Us */

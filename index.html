@@ -75,6 +75,18 @@
         </div>
     </section>
 
+    <!-- Opiniones de Clientes -->
+    <section id="opiniones" class="section">
+        <h2 class="section-title">NUESTROS <span>CLIENTES</span></h2>
+        <div class="reviews-grid">
+            <img src="images/reviews/review_1.png" alt="Reseña Google Maps" class="review-card-img">
+            <img src="images/reviews/review_2.png" alt="Reseña Google Maps" class="review-card-img">
+            <img src="images/reviews/review_3.png" alt="Reseña Google Maps" class="review-card-img">
+            <img src="images/reviews/review_4.png" alt="Reseña Google Maps" class="review-card-img">
+            <img src="images/reviews/review_5.png" alt="Reseña Google Maps" class="review-card-img">
+        </div>
+    </section>
+
     <!-- Sobre Nosotros -->
     <section id="nosotros" class="section bg-dark">
         <h2 class="section-title">SOBRE <span>NOSOTROS</span></h2>
@@ -135,5 +147,40 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">Diseñado por Poldv</p>
     </footer>
 
+    <script>
+        // Lógica para arrastrar (drag) con el mouse la tira de marcas y opiniones
+        const sliders = document.querySelectorAll('.marquee-container, .reviews-grid');
+        
+        sliders.forEach(slider => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.style.cursor = 'grabbing';
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // Velocidad de arrastre (multiplicador)
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
 </body>
 </html>
