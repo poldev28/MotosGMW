@@ -1,10 +1,10 @@
 :root {
-    --primary-color: #FFD500; /* Amarillo GMW */
+    --primary-color: #E6BE14; /* Amarillo más suave y elegante, menos chocante */
     --primary-hover: #E6C200;
-    --bg-dark: #121212;
-    --bg-card: #1E1E1E;
-    --text-light: #F5F5F5;
-    --text-muted: #B0B0B0;
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --text-light: #f5f5f5;
+    --text-muted: #aaa;
     --whatsapp-color: #25D366;
 }
 
@@ -162,26 +162,36 @@ a {
 }
 
 .brand-item {
-    width: 200px;
+    width: 180px;
+    height: 100px;
     flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    color: #555;
-    background: #111;
-    margin: 0 15px;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #222;
+    margin: 0 20px;
+    background: rgba(255, 255, 255, 0.25); /* Transparencia alta (75% transparente) */
+    border: 2px solid rgba(230, 190, 20, 0.5); /* Borde amarillo más suave */
+    box-shadow: 0 4px 15px rgba(230, 190, 20, 0.15); /* Brillo amarillo de fondo más suave */
+    backdrop-filter: blur(4px); /* Ayuda a que el fondo no ensucie los logos al ser tan transparente */
+    padding: 15px;
+    border-radius: 16px;
     transition: all 0.3s;
 }
 
 .brand-item:hover {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.brand-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+    transition: all 0.3s ease;
+}
+
+.brand-item:hover img {
+    filter: drop-shadow(0 8px 15px rgba(230, 190, 20, 0.5)); /* Resplandor amarillo suave en el logo directo */
 }
 
 @keyframes scroll {
