@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motos GMW - Repuestos y Accesorios en Escobar</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo-real.png">
+
+    <!-- Open Graph / WhatsApp Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gmwmotos.com/">
+    <meta property="og:title" content="Motos GMW - Repuestos y Accesorios en Escobar">
+    <meta property="og:description" content="Todo en repuestos, accesorios e indumentaria para el motociclista en Matheu, Belén de Escobar.">
+    <meta property="og:image" content="https://gmwmotos.com/images/logo-real.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Motos GMW - Repuestos y Accesorios en Escobar">
+    <meta name="twitter:description" content="Todo en repuestos, accesorios e indumentaria para el motociclista en Matheu, Belén de Escobar.">
+    <meta name="twitter:image" content="https://gmwmotos.com/images/logo-real.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +41,20 @@
                 <img src="images/logo-real.png" alt="Motos GMW Logo">
             </a>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <a href="https://wa.me/5491167543899" class="btn-whatsapp" target="_blank">
-            <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
-        </a>
+        <div class="nav-actions">
+            <a href="https://wa.me/5491167543899" class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> <span>Hablar por WhatsApp</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -51,39 +72,55 @@
     <!-- Marcas (Marquee) -->
     <section class="brands-section">
         <h2>TRABAJAMOS CON LAS <span>MEJORES MARCAS</span></h2>
-        <div class="marquee-container">
-            <!-- Set 1 -->
-            <div class="brand-item"><img src="images/marcas/honda.png" alt="Honda"></div>
-            <div class="brand-item"><img src="images/marcas/yamaha.png" alt="Yamaha"></div>
-            <div class="brand-item"><img src="images/marcas/motomel.png" alt="Motomel"></div>
-            <div class="brand-item"><img src="images/marcas/zanella.png" alt="Zanella"></div>
-            <div class="brand-item"><img src="images/marcas/LS2.png" alt="LS2 Helmets"></div>
-            <div class="brand-item"><img src="images/marcas/castrol.png" alt="Castrol"></div>
-            <div class="brand-item"><img src="images/marcas/ipone.png" alt="Ipone"></div>
-            <div class="brand-item"><img src="images/marcas/paolucci.png" alt="Paolucci" style="transform: scale(1.35);"></div>
-            <div class="brand-item"><img src="images/marcas/hawk.png" alt="Hawk"></div>
-            <!-- Set 2 (Duplicado para scroll infinito) -->
-            <div class="brand-item"><img src="images/marcas/honda.png" alt="Honda"></div>
-            <div class="brand-item"><img src="images/marcas/yamaha.png" alt="Yamaha"></div>
-            <div class="brand-item"><img src="images/marcas/motomel.png" alt="Motomel"></div>
-            <div class="brand-item"><img src="images/marcas/zanella.png" alt="Zanella"></div>
-            <div class="brand-item"><img src="images/marcas/LS2.png" alt="LS2 Helmets"></div>
-            <div class="brand-item"><img src="images/marcas/castrol.png" alt="Castrol"></div>
-            <div class="brand-item"><img src="images/marcas/ipone.png" alt="Ipone"></div>
-            <div class="brand-item"><img src="images/marcas/paolucci.png" alt="Paolucci" style="transform: scale(1.35);"></div>
-            <div class="brand-item"><img src="images/marcas/hawk.png" alt="Hawk"></div>
+        <div class="carousel-wrapper">
+            <button class="carousel-arrow prev" data-target="brandsCarousel" aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="marquee-container" id="brandsCarousel">
+                <!-- Set 1 -->
+                <div class="brand-item"><img src="images/marcas/honda.png" alt="Honda"></div>
+                <div class="brand-item"><img src="images/marcas/yamaha.png" alt="Yamaha"></div>
+                <div class="brand-item"><img src="images/marcas/motomel.png" alt="Motomel"></div>
+                <div class="brand-item"><img src="images/marcas/zanella.png" alt="Zanella"></div>
+                <div class="brand-item"><img src="images/marcas/LS2.png" alt="LS2 Helmets"></div>
+                <div class="brand-item"><img src="images/marcas/castrol.png" alt="Castrol"></div>
+                <div class="brand-item"><img src="images/marcas/ipone.png" alt="Ipone"></div>
+                <div class="brand-item"><img src="images/marcas/paolucci.png" alt="Paolucci" style="transform: scale(1.35);"></div>
+                <div class="brand-item"><img src="images/marcas/hawk.png" alt="Hawk"></div>
+                <!-- Set 2 (Duplicado para scroll infinito) -->
+                <div class="brand-item"><img src="images/marcas/honda.png" alt="Honda"></div>
+                <div class="brand-item"><img src="images/marcas/yamaha.png" alt="Yamaha"></div>
+                <div class="brand-item"><img src="images/marcas/motomel.png" alt="Motomel"></div>
+                <div class="brand-item"><img src="images/marcas/zanella.png" alt="Zanella"></div>
+                <div class="brand-item"><img src="images/marcas/LS2.png" alt="LS2 Helmets"></div>
+                <div class="brand-item"><img src="images/marcas/castrol.png" alt="Castrol"></div>
+                <div class="brand-item"><img src="images/marcas/ipone.png" alt="Ipone"></div>
+                <div class="brand-item"><img src="images/marcas/paolucci.png" alt="Paolucci" style="transform: scale(1.35);"></div>
+                <div class="brand-item"><img src="images/marcas/hawk.png" alt="Hawk"></div>
+            </div>
+            <button class="carousel-arrow next" data-target="brandsCarousel" aria-label="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </section>
 
     <!-- Opiniones de Clientes -->
     <section id="opiniones" class="section">
         <h2 class="section-title">NUESTROS <span>CLIENTES</span></h2>
-        <div class="reviews-grid">
-            <img src="images/reviews/review_1.png" alt="Reseña Google Maps" class="review-card-img">
-            <img src="images/reviews/review_2.png" alt="Reseña Google Maps" class="review-card-img">
-            <img src="images/reviews/review_3.png" alt="Reseña Google Maps" class="review-card-img">
-            <img src="images/reviews/review_4.png" alt="Reseña Google Maps" class="review-card-img">
-            <img src="images/reviews/review_5.png" alt="Reseña Google Maps" class="review-card-img">
+        <div class="carousel-wrapper">
+            <button class="carousel-arrow prev" data-target="reviewsCarousel" aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="reviews-grid" id="reviewsCarousel">
+                <img src="images/reviews/review_1.png" alt="Reseña Google Maps" class="review-card-img">
+                <img src="images/reviews/review_2.png" alt="Reseña Google Maps" class="review-card-img">
+                <img src="images/reviews/review_3.png" alt="Reseña Google Maps" class="review-card-img">
+                <img src="images/reviews/review_4.png" alt="Reseña Google Maps" class="review-card-img">
+                <img src="images/reviews/review_5.png" alt="Reseña Google Maps" class="review-card-img">
+            </div>
+            <button class="carousel-arrow next" data-target="reviewsCarousel" aria-label="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </section>
 
@@ -179,6 +216,47 @@
                 const x = e.pageX - slider.offsetLeft;
                 const walk = (x - startX) * 2; // Velocidad de arrastre (multiplicador)
                 slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        // Menú Hamburguesa Móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+
+            // Cerrar menú al tocar cualquier enlace
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) icon.classList.replace('fa-times', 'fa-bars');
+                });
+            });
+        }
+
+        // Flechas Interactivas de los Carruseles
+        document.querySelectorAll('.carousel-arrow').forEach(arrow => {
+            arrow.addEventListener('click', () => {
+                const targetId = arrow.getAttribute('data-target');
+                const container = document.getElementById(targetId);
+                if (!container) return;
+
+                const scrollDistance = container.clientWidth * 0.75;
+                if (arrow.classList.contains('prev')) {
+                    container.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+                }
             });
         });
     </script>
