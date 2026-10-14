@@ -76,9 +76,11 @@ a {
 
 .nav-links a {
     font-weight: 600;
-    font-size: 1.4rem;
-    transition: color 0.3s;
-    font-family: 'Elronet Monospace', sans-serif;
+    font-size: 1.25rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .nav-links a:hover {
