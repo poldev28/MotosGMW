@@ -24,79 +24,195 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/styles.css?v=4">
     <style>
-        /* Specific styles for the products page */
+        /* Estilos de Combos / Kits */
         .products-header {
             padding: 8rem 5% 4rem;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('images/hero-bg.jpg') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('images/hero-bg.jpg') center/cover;
         }
         
-        .brand-group {
-            margin-top: 4rem;
-        }
-        
-        .brand-title {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
-        
-        .products-grid {
+        .combos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        .product-card {
+
+        .combo-card {
             background-color: var(--bg-card);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid #333;
+            border: 2px solid #222;
+            border-radius: 12px;
+            padding: 2.2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
+
+        .combo-card:hover {
+            transform: translateY(-6px);
             border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(230, 190, 20, 0.15);
         }
-        
-        .product-icon {
-            font-size: 3rem;
+
+        .combo-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #0a0a0a;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .combo-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .combo-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            background: rgba(230, 190, 20, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid rgba(230, 190, 20, 0.25);
+            flex-shrink: 0;
+        }
+
+        .combo-title {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .combo-desc {
             color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-        
-        .product-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
             margin-bottom: 1.5rem;
         }
-        
-        .btn-consultar {
+
+        .combo-items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            border-top: 1px solid #222;
+            padding-top: 1.2rem;
+        }
+
+        .combo-items li {
+            font-size: 0.92rem;
+            color: #ddd;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .combo-items li i {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .combo-price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed rgba(230, 190, 20, 0.4);
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+
+        .price-tag {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Fondos temáticos por combo con overlay oscuro */
+        .combo-card.bg-cubiertas {
+            background: linear-gradient(rgba(14, 14, 14, 0.88), rgba(14, 14, 14, 0.96)), url('images/combos/cubiertas.jpg') center/cover;
+        }
+
+        .combo-card.bg-creeled {
+            background: linear-gradient(rgba(14, 14, 14, 0.88), rgba(14, 14, 14, 0.96)), url('images/combos/creeled.jpg') center/cover;
+        }
+
+        .combo-card.bg-cilindro {
+            background: linear-gradient(rgba(14, 14, 14, 0.88), rgba(14, 14, 14, 0.96)), url('images/combos/cilindro.jpg') center/cover;
+        }
+
+        .btn-consultar-combo {
             background-color: transparent;
             color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-weight: bold;
+            border: 2px solid var(--primary-color);
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
             transition: all 0.3s;
-            cursor: pointer;
-            width: 100%;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
-        .btn-consultar:hover {
+
+        .btn-consultar-combo:hover {
             background-color: var(--primary-color);
-            color: #fff;
+            color: #0a0a0a;
+            box-shadow: 0 4px 15px rgba(230, 190, 20, 0.3);
+        }
+
+        .custom-order-banner {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            background: linear-gradient(135deg, #141414 0%, #1c1c1c 100%);
+            border: 1px solid #333;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.2rem;
         }
     </style>
 </head>
@@ -127,70 +243,186 @@
 
     <!-- Header de Productos -->
     <header class="products-header">
-        <h1 style="font-size: 3.5rem;">NUESTROS <span>PRODUCTOS</span></h1>
-        <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Explora nuestro catálogo por marcas. Si no encuentras lo que buscas, consultanos directamente.</p>
+        <h1 style="font-size: 3.5rem;">KITS & <span>COMBOS</span></h1>
+        <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Aprovechá nuestras promociones y paquetes seleccionados del mes. Consultá compatibilidad y stock para tu moto en el acto.</p>
     </header>
 
-    <!-- Catálogo de Productos -->
+    <!-- Catálogo de Combos -->
     <section class="section">
-        
-        <!-- Grupo de Marca: LS2 -->
-        <div class="brand-group">
-            <h2 class="brand-title">Cascos e Indumentaria LS2</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <i class="fas fa-motorcycle product-icon"></i>
-                    <h4>Casco LS2 Rapid</h4>
-                    <p>Integral, negro mate, visor anti-rayas.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20el%20Casco%20LS2%20Rapid" target="_blank" class="btn-consultar">Consultar Stock</a>
+        <div class="combos-grid">
+            
+            <!-- Combo 1 (Cubiertas) -->
+            <div class="combo-card bg-cubiertas">
+                <span class="combo-badge">SÚPER OFERTA</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-circle-notch"></i></div>
+                        <h3 class="combo-title">Jgo. Cubiertas Moto 110cc</h3>
+                    </div>
+                    <p class="combo-desc">Juego completo para Smash, Wave, Bit, Trip y todas las 110cc. Agarre urbano superior y máxima seguridad.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Cubierta delantera medida 2.50-17</li>
+                        <li><i class="fas fa-check"></i> Cubierta trasera medida 80/100-14</li>
+                        <li><i class="fas fa-check"></i> Trasera apta para uso con o sin cámara</li>
+                        <li><i class="fas fa-check"></i> Dibujo optimizado para asfalto seco y lluvia</li>
+                    </ul>
                 </div>
-                <div class="product-card">
-                    <i class="fas fa-motorcycle product-icon"></i>
-                    <h4>Casco LS2 Valiant</h4>
-                    <p>Rebatible, doble visor, ideal turismo.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20el%20Casco%20LS2%20Valiant" target="_blank" class="btn-consultar">Consultar Stock</a>
-                </div>
-                <div class="product-card">
-                    <i class="fas fa-tshirt product-icon"></i>
-                    <h4>Campera LS2 Phase</h4>
-                    <p>Térmica, con protecciones nivel 1.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20la%20Campera%20LS2%20Phase" target="_blank" class="btn-consultar">Consultar Stock</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Grupo de Marca: Castrol -->
-        <div class="brand-group">
-            <h2 class="brand-title">Lubricantes Castrol</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <i class="fas fa-oil-can product-icon"></i>
-                    <h4>Castrol Actevo 20W-50</h4>
-                    <p>Aceite mineral 4T para uso diario.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20el%20aceite%20Castrol%20Actevo" target="_blank" class="btn-consultar">Consultar Stock</a>
-                </div>
-                <div class="product-card">
-                    <i class="fas fa-oil-can product-icon"></i>
-                    <h4>Castrol Power 1 10W-40</h4>
-                    <p>Semi-sintético 4T de alto rendimiento.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20el%20aceite%20Castrol%20Power%201" target="_blank" class="btn-consultar">Consultar Stock</a>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">$49.000</span>
+                        <span class="price-note">Juego Completo</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Jgo.%20de%20Cubiertas%20110cc%20a%20$49.000" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <!-- Grupo de Marca: Baterías Bosch / Yuasa -->
-        <div class="brand-group">
-            <h2 class="brand-title">Baterías Bosch & Yuasa</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <i class="fas fa-car-battery product-icon"></i>
-                    <h4>Batería Gel 12V 5AH</h4>
-                    <p>Compatible con CG Titan, YBR, Smash.</p>
-                    <a href="https://wa.me/5491167543899?text=Hola,%20quisiera%20consultar%20por%20Baterías%20de%20Gel" target="_blank" class="btn-consultar">Consultar Stock</a>
+            <!-- Combo 2 (Cree LED) -->
+            <div class="combo-card bg-creeled">
+                <span class="combo-badge">MÁXIMA LUZ</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3 class="combo-title">Kit Cree LED para Motos</h3>
+                    </div>
+                    <p class="combo-desc">Faro auxiliar y principal Luxled G6 de 12V-36W. Luz blanca ultra potente para máxima visión nocturna en calle o ruta.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Incluye adaptadores universales para todas las motos</li>
+                        <li><i class="fas fa-check"></i> Reemplaza lámparas convencionales (H4, Bosch)</li>
+                        <li><i class="fas fa-check"></i> Driver estabilizador y cuerpo de aluminio disipador</li>
+                        <li><i class="fas fa-check"></i> Encendido instantáneo y bajo consumo de batería</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">Consultar Promo</span>
+                        <span class="price-note">Precio de Oferta</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Kit%20Cree%20LED%20para%20Motos" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
                 </div>
             </div>
+
+            <!-- Combo 3 (Cilindro Reforma) -->
+            <div class="combo-card bg-cilindro">
+                <span class="combo-badge">BIG BORE 125cc</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <h3 class="combo-title">Cilindro Reforma 110 a 125cc</h3>
+                    </div>
+                    <p class="combo-desc">Kit Big Bore potenciado para Wave S 110 y 110cc. Mayor compresión, aceleración y velocidad sin modificar cárter.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Cilindro potenciado Big Bore reforzado</li>
+                        <li><i class="fas fa-check"></i> Pistón forjado de alto rendimiento con aros y perno</li>
+                        <li><i class="fas fa-check"></i> Juego completo de juntas de culata y base</li>
+                        <li><i class="fas fa-check"></i> Ganancia inmediata de torque y respuesta</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">Consultar Promo</span>
+                        <span class="price-note">Kit Potenciación</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Kit%20Cilindro%20Reforma%20Wave%20S%20110%20a%20125cc" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
+                </div>
+            </div>
+
+            <!-- Combo 4 -->
+            <div class="combo-card">
+                <span class="combo-badge">SEGURIDAD</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-stop-circle"></i></div>
+                        <h3 class="combo-title">Kit Frenado Seguro</h3>
+                    </div>
+                    <p class="combo-desc">Renovación integral del sistema de detención para una respuesta inmediata y sin ruidos al frenar.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Pastillas de freno delanteras sinterizadas/orgánicas</li>
+                        <li><i class="fas fa-check"></i> Cintas de freno traseras de alta adherencia</li>
+                        <li><i class="fas fa-check"></i> Líquido de frenos Bosch / Wagner DOT 4</li>
+                        <li><i class="fas fa-check"></i> Compatibilidad verificada con tu modelo</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">Consultar Promo</span>
+                        <span class="price-note">Service Frenos</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Kit%20Frenado%20Seguro" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
+                </div>
+            </div>
+
+            <!-- Combo 5 -->
+            <div class="combo-card">
+                <span class="combo-badge">ARRANQUE SEGURO</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-bolt"></i></div>
+                        <h3 class="combo-title">Kit Batería & Encendido</h3>
+                    </div>
+                    <p class="combo-desc">Olvidate de renegar con el arranque en frío, en invierno o tras días sin usar la moto.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Batería de Gel libre de mantenimiento (Yuasa / Bosch)</li>
+                        <li><i class="fas fa-check"></i> Bujía de encendido rápido resistente</li>
+                        <li><i class="fas fa-check"></i> Testeo eléctrico sin cargo en el taller</li>
+                        <li><i class="fas fa-check"></i> Garantía escrita directa de mostrador</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">Consultar Promo</span>
+                        <span class="price-note">Batería & Testeo</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Kit%20Bater%C3%ADa%20y%20Encendido" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
+                </div>
+            </div>
+
+            <!-- Combo 6 -->
+            <div class="combo-card">
+                <span class="combo-badge">CUIDADO DIARIO</span>
+                <div>
+                    <div class="combo-header">
+                        <div class="combo-icon"><i class="fas fa-spray-can"></i></div>
+                        <h3 class="combo-title">Pack Estética & Cadena</h3>
+                    </div>
+                    <p class="combo-desc">El kit ideal de fin de semana para limpiar, lubricar y mantener la moto como recién sacada de agencia.</p>
+                    <ul class="combo-items">
+                        <li><i class="fas fa-check"></i> Lubricante para cadenas en aerosol Ipone / Castrol</li>
+                        <li><i class="fas fa-check"></i> Desengrasante limpiador de transmisión</li>
+                        <li><i class="fas fa-check"></i> Cepillo 3D ergonómico de limpieza</li>
+                        <li><i class="fas fa-check"></i> Paño de microfibra de alta densidad</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="combo-price-row">
+                        <span class="price-tag">Consultar Promo</span>
+                        <span class="price-note">Kit Limpieza</span>
+                    </div>
+                    <a href="https://wa.me/5491167543899?text=Hola!%20Quisiera%20consultar%20por%20el%20Pack%20Est%C3%A9tica%20y%20Cadena" target="_blank" class="btn-consultar-combo">
+                        <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                    </a>
+                </div>
+            </div>
+
         </div>
 
+        <!-- Banner de Consulta Personalizada -->
+        <div class="custom-order-banner">
+            <h3 style="font-size: 1.8rem; color: var(--text-light); font-family: 'Oswald', sans-serif;">¿BUSCÁS UN REPUESTO O ACCESORIO PUNTUAL?</h3>
+            <p style="color: var(--text-muted); max-width: 700px; font-size: 1.05rem;">Si no encontrás lo que necesitás en estos combos, consultanos por WhatsApp. Tenemos stock permanente de piezas originales y alternativas en nuestro local de Matheu.</p>
+            <a href="https://wa.me/5491167543899?text=Hola!%20Estoy%20buscando%20un%20repuesto%20espec%C3%ADfico" target="_blank" class="btn-whatsapp" style="padding: 0.8rem 1.8rem; font-size: 1rem;">
+                <i class="fab fa-whatsapp"></i> Consultar Repuesto por WhatsApp
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->
